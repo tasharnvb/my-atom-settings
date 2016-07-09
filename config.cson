@@ -1,0 +1,29 @@
+"*":
+  "activate-power-mode":
+    autoToggle: false
+  core:
+    closeEmptyWindows: false
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "xkcd-comics"
+    ]
+    themes: [
+      "seti-ui"
+      "seti-syntax"
+    ]
+  editor:
+    showIndentGuide: true
+    softWrap: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "4ba9c2d6-50c4-81d2-4a74-d98fa9ed0db0"
+  linter:
+    showErrorPanel: false
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+    scrollAnimation: true
+  welcome:
+    showOnStartup: false
