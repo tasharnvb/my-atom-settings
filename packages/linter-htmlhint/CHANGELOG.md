@@ -1,5 +1,30 @@
 # Change Log
 
+## [v1.2.1](https://github.com/AtomLinter/linter-htmlhint/tree/v1.2.1) (2016-06-17)
+[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v1.2.0...v1.2.1)
+
+**Implemented enhancements:**
+
+- Update htmlhint to v0.9.13 [\#118](https://github.com/AtomLinter/linter-htmlhint/pull/118) ([Arcanemagus](https://github.com/Arcanemagus))
+
+## [v1.2.0](https://github.com/AtomLinter/linter-htmlhint/tree/v1.2.0) (2016-06-13)
+[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v1.1.4...v1.2.0)
+
+**Implemented enhancements:**
+
+- Why a subprocess? [\#111](https://github.com/AtomLinter/linter-htmlhint/issues/111)
+- Update atom-linter to version 5.0.2 🚀 [\#115](https://github.com/AtomLinter/linter-htmlhint/pull/115) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- No subprocess [\#112](https://github.com/AtomLinter/linter-htmlhint/pull/112) ([download13](https://github.com/download13))
+- Update eslint-config-airbnb-base to version 3.0.1 🚀 [\#110](https://github.com/AtomLinter/linter-htmlhint/pull/110) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 2.0.0 🚀 [\#106](https://github.com/AtomLinter/linter-htmlhint/pull/106) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Closed issues:**
+
+- Linter not triggered [\#33](https://github.com/AtomLinter/linter-htmlhint/issues/33)
+
+## [v1.1.4](https://github.com/AtomLinter/linter-htmlhint/tree/v1.1.4) (2016-04-21)
+[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v1.1.3...v1.1.4)
+
 ## [v1.1.3](https://github.com/AtomLinter/linter-htmlhint/tree/v1.1.3) (2016-04-19)
 [Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v1.1.2...v1.1.3)
 
@@ -109,7 +134,6 @@
 
 - Broken for XHTML5. [\#58](https://github.com/AtomLinter/linter-htmlhint/issues/58)
 - "Doctype must be declared at first" in Web Components / Polymer [\#51](https://github.com/AtomLinter/linter-htmlhint/issues/51)
-- Unexpected end of file [\#50](https://github.com/AtomLinter/linter-htmlhint/issues/50)
 - Should not lint .vue files [\#49](https://github.com/AtomLinter/linter-htmlhint/issues/49)
 - .htmlhintrc parsing issue [\#48](https://github.com/AtomLinter/linter-htmlhint/issues/48)
 - Failed to activate the linter-htmlhint package [\#46](https://github.com/AtomLinter/linter-htmlhint/issues/46)
@@ -172,7 +196,7 @@
 - Package.getActivationCommands is deprecated. [\#13](https://github.com/AtomLinter/linter-htmlhint/issues/13)
 
 ## [v0.0.16](https://github.com/AtomLinter/linter-htmlhint/tree/v0.0.16) (2015-05-21)
-[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/0.0.15...v0.0.16)
+[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v0.0.15...v0.0.16)
 
 **Closed issues:**
 
@@ -181,9 +205,6 @@
 **Merged pull requests:**
 
 - Fix Config.unobserve deprecation [\#22](https://github.com/AtomLinter/linter-htmlhint/pull/22) ([CarlRosell](https://github.com/CarlRosell))
-
-## [0.0.15](https://github.com/AtomLinter/linter-htmlhint/tree/0.0.15) (2015-05-04)
-[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v0.0.15...0.0.15)
 
 ## [v0.0.15](https://github.com/AtomLinter/linter-htmlhint/tree/v0.0.15) (2015-05-04)
 [Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v0.0.13...v0.0.15)
@@ -209,10 +230,7 @@
 - Changed empty string default path to `@cwd`.  While the empty path fixed... [\#14](https://github.com/AtomLinter/linter-htmlhint/pull/14) ([johnwebbcole](https://github.com/johnwebbcole))
 
 ## [v0.0.12](https://github.com/AtomLinter/linter-htmlhint/tree/v0.0.12) (2015-04-01)
-[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/0.0.12...v0.0.12)
-
-## [0.0.12](https://github.com/AtomLinter/linter-htmlhint/tree/0.0.12) (2015-04-01)
-[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v0.0.10...0.0.12)
+[Full Changelog](https://github.com/AtomLinter/linter-htmlhint/compare/v0.0.10...v0.0.12)
 
 **Merged pull requests:**
 
