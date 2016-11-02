@@ -7,6 +7,7 @@
     disabledPackages: [
       "xkcd-comics"
     ]
+    telemetryConsent: "limited"
     themes: [
       "seti-ui"
       "seti-syntax"
