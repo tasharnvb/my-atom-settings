@@ -1,0 +1,83 @@
+@import "syntax-variables";
+
+.source.rainmeter{
+  .section,
+  .predefined.section{
+    color: @syntax-color-function;
+  }
+
+  .predefined.section{
+    font-weight: bold;
+  }
+
+  .variable,
+  .predefined.variable{
+    color: @syntax-color-variable;
+  }
+
+  .predefined.variable{
+    font-style: italic;
+  }
+
+  .section.variable{
+    color: @syntax-color-snippet;
+    background-color: rgba(red(@syntax-color-snippet), green(@syntax-color-snippet), blue(@syntax-color-snippet), 0.1);
+  }
+
+  .section.variable.arg{
+    color: @syntax-color-constant;
+  }
+
+  .invalid{
+    color: white;
+    background-color: @syntax-color-removed;
+  }
+
+  .support.function{
+    font-style: italic;
+  }
+
+  .support.function.constant{
+    font-style: normal;
+  }
+
+  .deprecated.function{
+    color: darken(@syntax-color-modified, 50%);
+    background-color: @syntax-color-modified;
+    font-style: normal;
+  }
+
+  .option{
+    color: @syntax-color-keyword;
+  }
+
+  .meter.style.option{
+    font-style: italic;
+  }
+
+  .include{
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .value.constant{
+    color: @syntax-color-class;
+  }
+
+  .value.constant.important{
+    font-weight: bold;
+  }
+
+  .color.r{
+    color: #FF5151;
+  }
+  .color.g{
+    color: #00D200;
+  }
+  .color.b{
+    color: #6262FF;
+  }
+  .color.a{
+    color: #AAAAAA;
+  }
+}

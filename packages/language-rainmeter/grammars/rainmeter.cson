@@ -1,0 +1,360 @@
+# general options
+scopeName: 'source.rainmeter'
+name: 'Rainmeter'
+fileTypes: [
+  'ini'
+  'inc'
+]
+patterns: [
+  # @include and comments
+  {include: '#general'}
+
+  # Variables section
+  {begin: '(?i)^\\s*(\\[Variables\\])\\s*$'
+  beginCaptures: {1: {name: 'predefined.section.rainmeter'}}
+  end: '(?=^\\s*\\[)'
+  patterns: [
+    {include: '#general'}
+    begin: '^\\s*([^=]*)='
+    beginCaptures: {1: {name: 'variable.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {include: '#bangs'}
+      {include: '#math'}
+      {include: '#colors'}
+    ]
+  ]}
+
+  # Rainmeter section
+  {begin: '(?i)^\\s*(\\[Rainmeter\\])\\s*$'
+  beginCaptures: {1: {name: 'predefined.section.rainmeter'}}
+  end: '(?=^\\s*\\[)'
+  patterns: [
+    {include: '#general'}
+    {include: '#meterActionOptions'}
+    {begin: '(?i)^\\s*(On(Refresh|Close|(Un)?Focus|Wake)Action|(?!ContextAction1\\s*=)ContextAction\\d*)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {include: '#bangs'}
+      {include: '#math'}
+    ]}
+    {begin: '(?i)^\\s*((Transition)?Update|DefaultUpdateDivider|AccurateText|DynamicWindowSize|Skin(Width|Height)|DragMargins|ToolTipHidden|Image(Crop|Tint|Alpha|Flip|Rotate)|Greyscale|UseExifOrientation|ColorMatrix[1-5]|Background(Mode|Margins)?|SolidColor2?|GradientAngle|BevelType|(?!BlurRegion1)BlurRegion\\d*|Blur)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {include: '#math'}
+    ]}
+    {begin: '(?i)^\\s*(Group|(?!ContextTitle1)ContextTitle\\d*)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {match: '[^\\n\"#\\[\\]]+'
+      name: 'string.rainmeter'}
+    ]}
+  ]}
+
+  # Metadata section
+  {begin: '(?i)^\\s*(\\[Metadata\\])\\s*$'
+  beginCaptures: {1: {name: 'predefined.section.rainmeter'}}
+  end: '(?=^\\s*\\[)'
+  patterns: [
+    {include: '#general'}
+    {begin: '(?i)^\\s*(Name|Author|Information|Version|License)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: '\\d'
+      name: 'constant.numeric.rainmeter'}
+      {match: '[^\\d\\n\"#\\[\\]]+'
+      name: 'string.rainmeter'}
+      {include: '#variables'}
+    ]}
+  ]}
+
+  # Meters and Measures
+  {begin: '(?i)^\\s*(\\[(?!Rainmeter|Variables|Metadata)[^\\s#@%]+\\])\\s*$'
+  beginCaptures: {1: {name: 'section.rainmeter'}}
+  end: '(?=^\\s*\\[)'
+  patterns: [
+    {include: '#general'}
+    {include: '#meterActionOptions'}
+    # Meter
+    {match: '(?i)^\\s*(Meter)\\s*=\\s*"?(Bar|Bitmap|Button|Histogram|Image|Line|Rotator|Roundline|String|Shape)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.important.rainmeter'}}
+
+    # Measure
+    {match: '(?i)^\\s*(Measure)\\s*=\\s*"?(Calc|Cpu|FreeDiskSpace|Loop|(?:Physical|Swap)?Memory|Net|Plugin|Registry|Script|String|(?:Up)?Time)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.important.rainmeter'}}
+    # Plugin
+    {match: '(?i)^\\s*(Plugin)\\s*=\\s*"?(ActionTimer|AdvancedCPU|AudioLevel|CoreTemp|FileView|FolderInfo|InputText|iTunes|MediaKey|NowPlaying|PerfMon|Ping|Power|Process|Quote"?|RecycleManager|ResMon|RunCommand|SpeedFan|SysInfo|VirtualDesktops|WebParser|WiFiStatus|Win7Audio|WindowMessage)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.important.rainmeter'}}
+    # Options that have specific values
+    {match: '(?i)^\\s*((?:Mask)?ImageFlip)\\s*=\\s*"?(None|Horizontal|Vertical|Both)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(ToolTipIcon)\\s*=\\s*"?(Info|Warning|Error|Question|Shield)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*((?:Bar|Graph)Orientation)\\s*=\\s*"?(Horizontal|Vertical)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(BitmapAlign)\\s*=\\s*"?(Left|Center|Right)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(GraphStart)\\s*=\\s*"?(Left|Right)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(StringAlign)\\s*=\\s*"?((?:Left|Right|Center)(?:|Top|Bottom|Center))"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(StringStyle)\\s*=\\s*"?(Normal|Bold|Italic|BoldItalic)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(StringCase)\\s*=\\s*"?(None|Upper|Lower|Proper)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(StringEffect)\\s*=\\s*"?(None|Shadow|Border)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*((?!InlineSetting1)InlineSetting\\d*)\\s*=\\s*"?((Face|Size|Color|Weight|CharacterSpacing|Typography|GradientColor|Stretch)(?=\\s*\\|.*)|(Italic|Oblique|Un"?derline|Strikethrough|None)\\s*$)'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(RegHKey)\\s*=\\s*"?(HKEY_(CURRENT_(CONFIG|USER)|LOCAL_MACHINE|CLASSES_ROOT|(PERFORMANCE|DYN)_DATA))"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(AutoScale)\\s*=\\s*"?(0|[1-2]k?)"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+    {match: '(?i)^\\s*(BevelType|PreserveAspectRatio|ClipString)\\s*=\\s*"?([0-2])"?\\s*$'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+
+     # Shape options
+    {match: '(?i)^\\s*((?!Shape1\\s*=)Shape\\d*)\\s*=\\s*"?(Ellipse|Rectangle|Line|Arc|Curve|Path|Combine)\\s*'
+    captures:
+      1: {name: 'option.rainmeter'}
+      2: {name: 'value.constant.rainmeter'}}
+      {include: '#variables'}
+      {include: '#colors'}
+    {match: '(?i)\\s*(Fill Color|Stroke Color|Stroke(Width|Dashes|DashOffset|DashCap|StartCap|EndCap|LineJoin)|Scale|Rotate|Skew|Offset|TransformOrder|Extend|Fill|(Linear|Radial)Gradient|Union|Intersect|XOR|Exclude)\\b'
+    captures:
+      1: {name: 'value.constant.rainmeter'}}
+
+    # 1/0 options
+    {begin: '(?i)^\\s*(Hidden|AntiAlias|Greyscale|UseExifOrientation|ToolTipType|ToolTipHidden|Flip|BitmapZeroFrame|BitmapExtend|Tile|HorizontalLines|Solid|ControlAngle|Percentual|InvertMeasure|DynamicVariables|Disabled|Paused|IfConditionMode|IfMatchMode|RegExpSubstitute|UpdateRandom|UniqueRandom|Total|Label|Type|IgnoreRemovable|DiskQuota|Cumulative|DaylightSavingTime|AddDaysToHours)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: '\\s*"?([0-1])"?(?=\\s*$)'
+      captures: {1: {name: 'value.constant.rainmeter'}}}
+      {include: '#variables'}
+      {include: '#math'}
+    ]}
+    # All other options
+    {begin: '(?i)^\\s*(MeterStyle|(?!MeasureName1)MeasureName\\d*|BevelType|AntiAlias|DynamicVariables|Greyscale|(Mask)?Image(Path|Flip|Name)|UseExifOrientation|ColorMatrixN|ToolTip(Text|Icon|Type|Hidden)|BarImage|BarOrientation|Flip|Bitmap(Image|ZeroFrame|Extend)|ButtonImage|Autoscale|Graph(Start|Orientation)|(Primary|Secondary|Both)Image(Path|Flip)?|PreserveAspectRatio|Tile|HorizontalLines|GraphStart|GraphOrientation|ControlAngle|String(Align|Style|Case|Effect)|ClipString|Percentual|(?!InlineSetting1)Inline(Setting)\\d*|Disabled|Paused|IfConditionMode|IfMatchMode|Substitute|RegExpSubstitute|(Update|Unique)Random|Processor|Drive|Total|Label|Type|IgnoreRemovable|DiskQuota|Interface|Cumulative|Reg(HKey|Value)|ScriptFile|TimeStamp|DaylightSavingTime|AddDaysToHours|(?!If(Above|Below|Equal)Action1)If(Above|Below|Equal)Action\\d*|(?!If(Match|NotMatch|True|False)Action1)If(Match|NotMatch|True|False)Action\\d*)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+    ]}
+
+    # Number options
+    {begin: '(?i)^\\s*(Padding|UpdateDivider|GradientAngle|TransformationMatrix|Image(Crop|Alpha|Rotate)|ColorMatrix[1-5]|ToolTipWidth|BarBorder|Bitmap(Transition)?Frames|Bitmap(Digits|Separation)|(Primary|Secondary|Both)Image(Crop|Alpha|Rotate|ColorMatrix[1-5])|ScaleMargins|MaskImageRotate|Line(Count|Width|Length|Start)|(?!Scale1)Scale\\d*|Offset(X|Y)|(Start|Rotation)Angle|ValueRemainder|(Start|Length)Shift|FontSize|ClipString(W|H)|Angle|NumOfDecimals|(Max|Min)Value|AverageSize|(?!If(Above|Below|Equal)Value1)If(Above|Below|Equal)Value\\d*|(?!IfCondition1)IfCondition\\d*|(?!If(Match|NotMatch)1)If(Match|NotMatch)\\d*|(Low|High)Bound|(Start|End)Value|Increment|LoopCount|SecondsValue)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {include: '#math'}
+    # Color options
+    ]}
+    {begin: '(?i)^\\s*(SolidColor2?|ImageTint|(Bar|Primary|Secondary|Both|HorizontalLine|Font(Effect)?)Color|(?!LineColor1)LineColor\\d*)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {include: '#colors'}
+    ]}
+    # X/Y/W/H options
+    {begin: '(?i)^\\s*(X|Y|W|H)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: '(?i)r'
+      name: 'support.function.constant.rainmeter'}
+      {include: '#variables'}
+      {include: '#math'}
+    ]}
+    # Format
+    {begin: '(?i)^\\s*((TimeStamp)?Format)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: '%([aAbBcCdDeFgGhHIjmMnprRStTuUVwWxXyYzZ%]|#?[cdHIjmMSUwWxyY]|E?[cCxXyY]|O?[deHImMSuUVwWy])'
+      name: 'support.function.constant.rainmeter'}
+      {match: '.'
+      name: 'string.rainmeter'}
+      {include: '#variables'}
+    ]}
+    # Formula
+    {begin: '(?i)^\\s*(Formula)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: 'Random|Counter'
+      name: 'support.function.constant.rainmeter'}
+      {include: '#variables'}
+      {include: '#math'}
+    ]}
+    # Text
+    {begin: '(?i)^\\s*((ToolTip)?Text)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {match: '%\\d'
+      name: 'support.function.constant.rainmeter'}
+      {match: '[^\\n\"#\\[\\]%]+'
+      name: 'string.rainmeter'}
+      {include: '#variables'}
+    ]}
+    {begin: '(?i)^\\s*(Group|ToolTipTitle|(Pre|Post)fix|FontFace|(?!InlinePattern1)InlinePattern\\d*|Substitute|RegKey|String)\\s*='
+    beginCaptures: {1: {name: 'option.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+      {match: '[^\\n\"#\\[\\]]+'
+      name: 'string.rainmeter'}
+    ]}
+  ]}
+]
+
+# Storage
+repository:
+
+  # Comments
+  comments:
+    match: '^\\s*;.*$'
+    name: 'comment.line.rainmeter'
+
+  # @include
+  include:
+    begin: '(?i)^\\s*(@include[^\\s=]*)='
+    beginCaptures: {1: {name: 'option.include.rainmeter'}}
+    end: '$'
+    patterns: [
+      {include: '#variables'}
+    ]
+
+  # Comments and @include merged
+  general:
+    patterns: [
+      {include: '#comments'}
+      {include: '#include'}
+    ]
+
+  # Section variables and their arguments
+  sectionVars:
+    match: '(\\[\\w+)(:(|(?i)X|Y|W|H|EscapeRegExp|EncodeURL|Timestamp|(Min|Max)Value|(\\/[+-]?\\d+|%)(,\\d+,?)?|\\d+))?(\\])'
+    captures:
+      1: {name: 'section.variable.rainmeter'}
+      2: {name: 'section.variable.arg.rainmeter'}
+      7: {name: 'section.variable.rainmeter'}
+
+  # Enviroment variables
+  enviromentVars:
+    match: '%[A-Za-z][0-9a-zA-Z_]+?%'
+    name: 'predefined.variable.rainmeter'
+
+  # Built in variables
+  builtInVars:
+    match: '(?i)#(@|PROGRAMDRIVE|PROGRAMPATH|SETTINGSPATH|SKINSPATH|PLUGINSPATH|ADDONSPATH|CURRENTPATH|ROOTCONFIGPATH|CURRENTFILE|CURRENTCONFIG|CURRENTSECTION|CURRENTCONFIGWIDTH|CURRENTCONFIGHEIGHT|CURRENTCONFIGX|CURRENTCONFIGY|[Pp]?WORKAREAX|[Pp]?WORKAREAY|[Pp]?WORKAREAWIDTH|[Pp]?WORKAREAHEIGHT|[PpVv]?SCREENAREAWIDTH|[PpVv]?SCREENAREAHEIGHT|CRLF|WORKAREAWIDTH|WORKAREAHEIGHT|[PpVv]?SCREENAREAX|[PpVv]?SCREENAREAY|WORKAREAX@\\d+|WORKAREAY@\\d+|WORKAREAWIDTH@\\d+|WORKAREAHEIGHT@\\d+|SCREENAREAX@\\d+|SCREENAREAY@\\d+|SCREENAREAWIDTH@\\d+|SCREENAREAHEIGHT@\\d+)#'
+    name: 'predefined.variable.rainmeter'
+
+  # Event variables
+  eventVars:
+    match: '(?i)\\$(Mouse(X|Y)(:%)?|Userinput)\\$'
+    name: 'predefined.variable.rainmeter'
+
+  # All other - normal variables
+  normalVars:
+    match: '(?!#\\*.+?\\*#)#\\w+#'
+    name: 'variable.rainmeter'
+
+  # All the variables combined
+  variables:
+    patterns: [
+      {include: '#sectionVars'}
+      {include: '#enviromentVars'}
+      {include: '#builtInVars'}
+      {include: '#eventVars'}
+      {include: '#normalVars'}
+    ]
+
+  # All Bangs
+  bangs:
+    patterns: [
+      # Normal
+      {match: '(?i)!(Set(Clip|Wallpaper)|About|Manage|TrayMenu|Log|ResetStats|LoadLayout|RefreshApp|Quit|SetOption(Group)?|WriteKeyValue|SetVariable(Group)?|Toggle(Group|Config)?|Move(Meter)?|DeactivateConfig(Group)?|ActivateConfig|Refresh(Group)?|Redraw(Group)?|SetTransparency(Group)?|(Show|Hide|Toggle)Fade(Group)?|(Show|Hide|Toggle|Add|Remove)Blur|Draggable(Group)?|ZPos(Group)?|KeepOnScreen(Group)?|ClickThrough(Group)?|SnapEdges(Group)?|SkinMenu|(Show|Hide|Toggle|Update)Meter(Group)?|((Dis|En)able|Toggle|Update)Measure(Group)?|CommandMeasure|(Un|Toggle)?PauseMeasure|(Show|Hide)(Group)?|Update|LoadLayout)\\b'
+      name: 'support.function.rainmeter'}
+      # Deprecated
+      {match: '(?i)!(Rainmeter(SetClip|SetWallpaper|About|Manage|Log|LsBoxHook|ResetStats|TrayMenu|RefreshApp|Quit|(SetOptionGroup?)|WriteKeyValue|(SetVariableGroup?)|Toggle(Group|Config)?|Move(Meter)?|DeactivateConfig(Group)?|ActivateConfig|Refresh(Group)?|Redraw(Group)?|SetTransparency(Group)?|(Show|Hide|Toggle)Fade(Group)?|(Show|Hide|Toggle|Add|Remove)Blur|Draggable(Group)?|ZPos(Group)?|KeepOnScreen(Group)?|ClickThrough(Group)?|SnapEdges(Group)?|SkinMenu|(Show|Hide|Toggle|Update)Meter(Group)?|((Dis|En)able|Toggle|Update)Measure(Group)?|CommandMeasure|(Un|Toggle)?PauseMeasure|(Show|Hide)(Group)?|Update|LoadLayout)|Execute|(Rainmeter)?PluginBang)\\b'
+      name: 'deprecated.function.rainmeter'}
+    ]
+
+  # All math functions and constants
+  math:
+    patterns: [
+      {match: '(?i)\\b(((a)?(tan|sin|cos))|abs|exp|log|ln|sqrt|sgn|frac|trunc|floor|ceil|round|rad|min|max|clamp)\\s*(?=\\()'
+      name: 'support.function.rainmeter'}
+      {match: '(?i)\\b(PI|E)\\b'
+      name: 'support.function.constant.rainmeter'}
+    ]
+
+  # All options that require bangs
+  meterActionOptions:
+    patterns: [
+      {begin: '(?i)^\\s*(((Left|Right|Middle|X(1|2))Mouse(Up|Down|DoubleClick)|Mouse(Over|Leave|Scroll(Up|Down|Left|Right))|OnUpdate)Action|(?!If(Above|Below|Equal)Action1)If(Above|Below|Equal)Action\\d*|(?!If(Match|NotMatch)Action1)If(Match|NotMatch)Action\\d*|(?!If(True|False)Action1)If(True|False)Action\\d*|MouseActionCursor(Name)?)\\s*='
+      beginCaptures: {1: {name: 'option.rainmeter'}}
+      end: '$'
+      patterns: [
+        {include: '#variables'}
+        {include: '#bangs'}
+      ]}
+    ]
+
+  colors:
+    patterns: [
+      {match: '(?i)(\\d+),\\s*(\\d+),\\s*(\\d+)(?:,\\s*(\\d+))?|(?<=[= \"])([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})?[\\s\"]'
+      captures:
+        1: {name: 'color.r.rainmeter'}
+        2: {name: 'color.g.rainmeter'}
+        3: {name: 'color.b.rainmeter'}
+        4: {name: 'color.a.rainmeter'}
+        5: {name: 'color.r.rainmeter'}
+        6: {name: 'color.g.rainmeter'}
+        7: {name: 'color.b.rainmeter'}
+        8: {name: 'color.a.rainmeter'}}
+    ]

@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+        "spec": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\apm-install-dir-117417-9956-xqt5l8.jqehm5nrk9"
+    ]
+  ],
+  "_from": "..\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+  "_id": "language-rainmeter@1.6.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/language-rainmeter",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+    "spec": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+  "_shasum": "164349a8d8ec8f7fd5f1a01bb917e9c2306e4c4d",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\d-117417-9956-1sz8xg0.0c12dtpgb9\\package.tgz",
+  "_where": "C:\\Users\\Tasharn\\AppData\\Local\\Temp\\apm-install-dir-117417-9956-xqt5l8.jqehm5nrk9",
+  "author": {
+    "name": "NighthawkSLO",
+    "email": "jon.kuhar99@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/NighthawkSLO/language-rainmeter/issues"
+  },
+  "dependencies": {},
+  "description": "Syntax highlighting and snippets for Rainmeter files",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=0.50.0"
+  },
+  "homepage": "https://github.com/NighthawkSLO/language-rainmeter#readme",
+  "license": "MIT",
+  "main": "./lib/rainmeter.coffee",
+  "name": "language-rainmeter",
+  "optionalDependencies": {},
+  "private": false,
+  "readme": "# Rainmeter language syntax\n\nAdds syntax highlighting for Rainmeter files in Atom\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NighthawkSLO/language-rainmeter.git"
+  },
+  "version": "1.6.3",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib\\rainmeter.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

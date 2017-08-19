@@ -1,30 +1,44 @@
 "*":
   "activate-power-mode":
     autoToggle: false
+  "atom-beautify":
+    general:
+      _analyticsUserId: "cc3c84f3-61e2-447d-8788-d07369e60ee8"
+  "autocomplete-python":
+    pythonPaths: "C:\\Users\\Tasharn\\AppData\\Local\\Programs\\Python\\Python35-32\\python"
+    useKite: false
+    useSnippets: "all"
   core:
     closeEmptyWindows: false
     destroyEmptyPanes: false
-    disabledPackages: [
-      "xkcd-comics"
-    ]
     telemetryConsent: "limited"
     themes: [
       "seti-ui"
       "seti-syntax"
     ]
   editor:
+    fontSize: 18
     showIndentGuide: true
     softWrap: true
     tabLength: 4
     tabType: "soft"
   "exception-reporting":
     userId: "4ba9c2d6-50c4-81d2-4a74-d98fa9ed0db0"
-  linter:
-    showErrorPanel: false
+  kite:
+    showKiteTourOnStatup: false
+  linter: {}
+  "linter-pylint": {}
+  "linter-ui-default":
+    panelHeight: 145
+    statusBarRepresents: "Current File"
   minimap:
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
     scrollAnimation: true
+  "seti-syntax": {}
+  "seti-ui":
+    themeColor: "Purple"
+  "tree-view": {}
   welcome:
     showOnStartup: false

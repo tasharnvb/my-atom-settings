@@ -1,3 +1,33 @@
+## 3.14.1
+
+* Fix exception occuring during closing of output panel
+
+## 3.14.0
+
+* Support for `PureScript`
+* Support for `Robot Framework`
+* Fix exception in options view
+
+## 3.13.0
+
+* Support for `HTML`
+* Fix exception during profile saving
+
+## 3.12.2
+
+* Fix condition for detecting cwd.
+
+## 3.12.1
+
+* Fix `Cannot read property 'path' of undefined`
+
+## 3.12.0
+
+* Convert codebase to ES6 Javascript
+* Fix path to fixtures in tests
+* Support for `LAMMPS`
+* Support for `VBScript`
+
 ## 3.11.1
 
 * Revert `Support java packages`
